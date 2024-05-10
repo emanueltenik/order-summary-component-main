@@ -32,8 +32,8 @@ Screenshot of my solution.
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/responsive-order-summary-page-with-hover-states-and-semantic-html-PCiUJ_dqOI)
-- Live Site URL: [Add live site URL here](https://emanueltenik.github.io/order-summary-component-main/)
+- Solution URL: [Solution URL here](https://www.frontendmentor.io/solutions/responsive-order-summary-page-with-hover-states-and-semantic-html-PCiUJ_dqOI)
+- Live Site URL: [Live site URL here](https://emanueltenik.github.io/order-summary-component-main/)
 
 ## My process
 
