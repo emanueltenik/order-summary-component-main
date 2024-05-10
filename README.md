@@ -33,7 +33,7 @@ Screenshot of my solution.
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://emanueltenik.github.io/order-summary-component-main/)
 
 ## My process
 
