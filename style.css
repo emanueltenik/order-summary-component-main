@@ -1,0 +1,256 @@
+/*  || RESET    */
+/* 
+    - Reset padding and margins of all elements to zero for easy conistency when implementing design.
+    - Set box-sizing of all elements to border-box so that the browser accounts for paddings, border etc.,  when calculating the sizes of elements
+ */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Set font settings and scroll behaviour for the page*/
+html {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    line-height: clamp(1.125rem, 0.882vw + 0.949rem, 1.875rem);
+    scroll-behavior: smooth;
+}
+
+/* make images to take up full width*/
+img {
+    display: block;
+    width: 100%;
+}
+
+/* change default fonts settings and color for buttons to inherit that of the parent element(body) */
+button {
+    font: inherit;
+    color: inherit;
+}
+
+
+/*  || VARIABLES    */
+:root {
+    /*  # Colors */
+     /*  ## Primary-colors */
+    --primary-box-shadow: 2px 10px 22px -12px hsla(234, 85%, 45%, 0.3);
+    --primary-box-shadow-sm: 2px 10px 22px -4px hsla(234, 85%, 45%, 0.3);
+    --primary: hsl(245, 75%, 52%);
+    --primary-pale: hsl(225, 100%, 94%);
+
+     /*  ## Neutral-colors */
+    --neutral-pale: hsl(225, 100%, 98%);
+    --neutral-desaturated: hsl(225, 17%, 41%);
+    --neutral-dark: hsl(223, 47%, 23%);
+
+    /*  # Fonts(font-weights) */
+    --fw-md: 700;
+    --fw-lg: 900;
+
+    /*  # Border radius */
+    --border-radius-lg: 25px;
+    --border-radius: 13px;
+}
+
+    /*  # Fonts(font-sizes) */
+/* For browsers that support clamp  */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+          --fs-sm: clamp(0.8rem, 0.13vi + 0.77rem, 0.89rem);/* (Font Size Small) */
+          --fs-base: clamp(1rem, 0.27vi + 0.95rem, 1.19rem);/* Base */
+          --fs-md: clamp(1.25rem, 0.48vi + 1.15rem, 1.58rem); /* medium */
+          --fs-lg: clamp(1.56rem, 0.78vi + 1.41rem, 2.11rem);/* large */
+          --fs-xl: clamp(1.95rem, 1.23vi + 1.71rem, 2.81rem);/* extra large */
+          --fs-xxl: clamp(2.44rem, 1.87vi + 2.07rem, 3.75rem);/* extra extra large */
+          --fs-xxxl: clamp(3.05rem, 2.78vi + 2.5rem, 5rem); /*  extraextra extra large */
+    }
+  }
+  /* For browsers that don't support clamp */
+  @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+          --fs-sm: 0.8rem;
+          --fs-base: 1rem;
+          --fs-md: 1.25rem;
+          --fs-lg: 1.56rem;
+          --fs-xl: 1.95rem;
+          --fs-xxl: 2.44rem;
+          --fs-xxxl: 3.05rem;
+    }
+    @media screen and (min-width: 1440px) {
+      :root {
+              --fs-sm: 0.89rem;
+              --fs-base: 1.19rem;
+              --fs-md: 1.58rem;
+              --fs-lg: 2.11rem;
+              --fs-xl: 2.81rem;
+              --fs-xxl: 3.75rem;
+              --fs-xxxl: 5rem;
+      }
+    }
+  } 
+
+
+/*  || GENERAL STYLES    */
+body {
+    font: inherit;
+    /* font-size: calc(var(--fs-sm) + 2.3px); */
+    min-height: 100vh;
+    overflow-y: auto;
+    background-color: var(--primary-pale);
+    background-image: url(./images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: var(--neutral-desaturated);
+}
+.wrapper { /* The container element that wrapps main page elements*/
+    padding: 1.125em 0;
+    display: flex;
+    /* center all the content inside it*/
+    justify-content: center;
+    align-items: center;
+}
+h1, h2 {
+    color: var(--neutral-dark);
+}
+.attribution {
+    font-size: 14px; 
+    text-align: center;
+    color: var(--neutral-desaturated);
+    margin-bottom: 0.625em;
+}
+
+/* Change the font and spacing of the h1 element*/
+h1 {
+    font-size: calc(var(--fs-sm) + 13.3px);
+    font-weight: var(--fw-lg);
+    margin: 1.43em 0 1.125em 0;
+}
+
+/* Create horizontal padding inside the card component excluding the hero section*/
+.card > :not(.hero) {
+    margin-left: 1.625em;
+    margin-right: 1.625em;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+.hero img {
+    max-height: 173px;
+}
+
+/* set styles for all link-states, to maintain consistency*/
+a:any-link{
+    color: var(--primary);
+    font-size: var(--fs-sm);
+    transition: color 150ms ease-in;
+    font-weight: var(--fw-md);
+}
+
+/* set styles for links during mouse-over/focus(in touch-screens) states */
+a:is(:hover, :focus-visible) {
+    filter: opacity(.7);
+}
+
+/*  || UTILITIES (resusable styles)   */
+.rounded {
+    border-radius: var(--border-radius);
+}
+.rounded-lg-top-left {
+    border-top-left-radius: var(--border-radius-lg);
+}
+.rounded-lg-top-right {
+    border-top-right-radius: var(--border-radius-lg);
+}
+.shadow {
+    box-shadow: var(--primary-box-shadow-sm);
+}
+.mt-base {
+    margin-top: 1.625em;
+}
+.text-center {
+    text-align: center;
+}
+
+
+/*  || BLOCKS  (components)  */
+.card {
+    width: min(100%, 375px);
+    box-shadow: var(--primary-box-shadow);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--neutral-pale);
+    position: relative;
+}
+.order {
+    display: grid;
+    grid-template-columns: 1fr 7fr 1.3fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 0.625em;
+    padding: 1.125em 0.625em;
+    background-color: hsla(227, 56%, 92%, 0.31);
+}
+.btn {/* button */
+    margin: 0.125em 0;
+    padding:  1.125em 0.625em;
+    transition: all 150ms ease-in;
+    text-align: center;
+    border:  none;
+    font-weight: var(--fw-md);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/*  || ELEMENTS    */
+.order__title {
+    font-size: calc(var(--fs-sm) + 2.3px);
+    font-weight: var(--fw-lg);
+}
+.order__icon {
+    width: 48px;
+    height: 48px;
+    grid-row: span 2;
+    align-self: center;
+}
+.order__details {
+    grid-column: 2;
+    grid-row: 2;
+    color: var(--neutral-desaturated);
+}
+.order__action {
+    grid-column: 3;
+    grid-row: span 2;
+    align-self: center;
+}
+
+
+/*  || MODIFIERS    */
+.btn--primary {
+    background-color: var(--primary);
+    color: var(--neutral-pale);
+}
+.btn--primary:hover { 
+    filter: opacity(.7);
+    outline: none;
+}
+
+
+/*  || MEDIA-QUERIES    */
+@media screen and (max-width: 479px) {
+    body {
+        padding-left: 1.625em;
+        padding-right: 1.625em;
+        
+    }
+    .card > :not(.hero) {
+        margin-left: 1.125em;
+        margin-right: 1.125em;
+    }
+    .attribution {
+        margin: 0.625em 0;
+    }
+}
